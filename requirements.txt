@@ -1,0 +1,6 @@
+pandas
+numpy
+dash
+networkx
+matplotlib
+dash-bootstrap-components
