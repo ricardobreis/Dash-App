@@ -96,7 +96,7 @@ layout = html.Div([
                                                 "A simple sidebar layout with navigation links", className="lead"
                                             ),
                                             html.Label('Dropdown'),
-                                            dcc.Dropdown(['New York City', 'Montréal', 'San Francisco'], 'Montréal'),
+                                            dcc.Dropdown([5, 10, 15], 5, id='dropdown'),
                                         ],
                                         className="sidebar"
                                     )
@@ -104,7 +104,7 @@ layout = html.Div([
                             ), width=3),
                             dbc.Col(html.Div(
                                 dcc.Graph(
-                                    id='example-graph',
+                                    id='graph',
                                     figure=fig
                                 ),
                             ), width=9),
@@ -120,10 +120,27 @@ layout = html.Div([
 
 
 @callback(
-    Output('page-1-display-value', 'children'),
-    Input('page-1-dropdown', 'value'))
-def display_value(value):
-    return f'You have selected {value}'
+    Output('graph', 'figure'),
+    Input('dropdown', 'value'))
+def update_figure(value):
+
+    node_trace.marker.size = value
+
+    fig = go.Figure(data=[edge_trace, node_trace],
+             layout=go.Layout(
+                showlegend=False,
+                hovermode='closest',
+                margin=dict(b=20,l=5,r=5,t=40),
+                annotations=[ dict(
+                    text="Python code: <a href='https://plotly.com/ipython-notebooks/network-graphs/'> https://plotly.com/ipython-notebooks/network-graphs/</a>",
+                    showarrow=False,
+                    xref="paper", yref="paper",
+                    x=0.005, y=-0.002 ) ],
+                xaxis=dict(showgrid=False, zeroline=False, showticklabels=False),
+                yaxis=dict(showgrid=False, zeroline=False, showticklabels=False))
+                )
+
+    return fig
 
 
 

@@ -5,3 +5,4 @@ plotly
 networkx
 matplotlib
 dash-bootstrap-components
+jupyter
