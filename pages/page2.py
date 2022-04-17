@@ -22,11 +22,7 @@ layout = html.Div([
                                                 "A simple sidebar layout with navigation links", className="lead"
                                             )
                                         ],
-                                        style={
-                                            "width": "300px",
-                                            "padding": "2rem 1rem",
-                                            "background-color": "#f8f9fa",
-                                        },
+                                        className="sidebar",
                                     )
                                 ]
                             ), width=3),
@@ -41,7 +37,3 @@ layout = html.Div([
     
 ])
 
-
-@callback(Output('page-2-display-value', 'children'), Input('page-2-dropdown', 'value'))
-def display_value(value):
-    return f'You have selected {value}'

@@ -94,13 +94,11 @@ layout = html.Div([
                                             html.Hr(),
                                             html.P(
                                                 "A simple sidebar layout with navigation links", className="lead"
-                                            )
+                                            ),
+                                            html.Label('Dropdown'),
+                                            dcc.Dropdown(['New York City', 'Montréal', 'San Francisco'], 'Montréal'),
                                         ],
-                                        style={
-                                            "width": "300px",
-                                            "padding": "2rem 1rem",
-                                            "background-color": "#f8f9fa",
-                                        },
+                                        className="sidebar"
                                     )
                                 ]
                             ), width=3),
