@@ -76,6 +76,9 @@ fig = go.Figure(data=[edge_trace, node_trace],
                 )
 
 
+
+# PAGE 1 CONTENT
+
 layout = html.Div([
 
         # Content

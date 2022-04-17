@@ -4,7 +4,7 @@ import pandas as pd
 import dash_bootstrap_components as dbc
 
 # Import all application pages
-from pages import page1, page2
+from pages import home, page1, page2
 
 # Add boostrap theme in 'external_stylesheets'
 app = Dash(__name__, external_stylesheets=[dbc.themes.COSMO], suppress_callback_exceptions=True)
@@ -36,52 +36,12 @@ app.layout = html.Div([
 
 
 
-# HOME CONTENT
-
-home = html.Div(children=[
-
-    # Content
-    html.Div(className="container", 
-        children=[
-                dbc.Row(
-                    [
-                        dbc.Col(html.Div(
-                            children=[
-                                html.Div(
-                                    [
-                                        html.H2("HOME", className="display-4"),
-                                        html.Hr(),
-                                        html.P(
-                                            "A simple sidebar layout with navigation links", className="lead"
-                                        )
-                                    ],
-                                    style={
-                                        "width": "300px",
-                                        "padding": "2rem 1rem",
-                                        "background-color": "#f8f9fa",
-                                    },
-                                )
-                            ]
-                        ), width=3),
-                        dbc.Col(html.Div("Conteúdo"), width=9),
-                    ]
-                ),
-            ],
-        style={
-            "padding-top" : "50px"
-        }
-    ),
-
-])
-
-
-
 # ROUTE'S CONTROL
 
 @callback(Output('page-content', 'children'), Input('url', 'pathname'))
 def display_page(pathname):
     if pathname == '/':
-        return home
+        return home.layout
     elif pathname == '/page1':
         return page1.layout
     elif pathname == '/page2':
